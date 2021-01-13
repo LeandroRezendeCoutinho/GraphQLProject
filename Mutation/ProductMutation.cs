@@ -17,6 +17,16 @@ namespace GraphQLProject.Mutation
                     return productService.AddProduct(context.GetArgument<Product>("product"));
                 });
 
+            Field<ProductType>("updateProduct",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }
+                    new QueryArgument<ProductInputType> { Name = "product" }),
+                resolve: context =>
+                {
+                    var productId = context.GetArgument<int>("id");
+                    var productObj = context.GetArgument<Product>("product");
+                    return productService.UpdateProduct(productId, productObj);
+                });
+
         }
     }
 }
