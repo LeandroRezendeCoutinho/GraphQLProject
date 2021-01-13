@@ -1,6 +1,7 @@
 using GraphQL;
 using GraphQL.Types;
 using GraphQLProject.Interfaces;
+using GraphQLProject.Models;
 using GraphQLProject.Type;
 
 namespace GraphQLQuery.Query
