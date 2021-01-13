@@ -18,7 +18,7 @@ namespace GraphQLProject.Mutation
                 });
 
             Field<ProductType>("updateProduct",
-                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" },
                     new QueryArgument<ProductInputType> { Name = "product" }),
                 resolve: context =>
                 {

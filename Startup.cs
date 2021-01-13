@@ -6,6 +6,7 @@ using GraphiQl;
 using GraphQL.Server;
 using GraphQL.Types;
 using GraphQLProject.Interfaces;
+using GraphQLProject.Mutation;
 using GraphQLProject.Schema;
 using GraphQLProject.Services;
 using GraphQLProject.Type;
@@ -39,6 +40,7 @@ namespace GraphQLProject
             services.AddTransient<IProduct, ProductService>();
             services.AddSingleton<ProductType>();
             services.AddSingleton<ProductQuery>();
+            services.AddSingleton<ProductMutation>();
             services.AddSingleton<ISchema, ProductSchema>();
             services.AddGraphQL(options =>
             {
