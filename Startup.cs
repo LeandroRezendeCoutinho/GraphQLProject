@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GraphiQl;
 using GraphQL.Server;
 using GraphQL.Types;
+using GraphQLProject.Data;
 using GraphQLProject.Interfaces;
 using GraphQLProject.Mutation;
 using GraphQLProject.Schema;
@@ -38,10 +39,10 @@ namespace GraphQLProject
 
             services.AddControllers();
             services.AddTransient<IProduct, ProductService>();
-            services.AddSingleton<ProductType>();
-            services.AddSingleton<ProductQuery>();
-            services.AddSingleton<ProductMutation>();
-            services.AddSingleton<ISchema, ProductSchema>();
+            services.AddTransient<ProductType>();
+            services.AddTransient<ProductQuery>();
+            services.AddTransient<ProductMutation>();
+            services.AddTransient<ISchema, ProductSchema>();
             services.AddGraphQL(options =>
             {
                 options.EnableMetrics = false;
@@ -50,6 +51,8 @@ namespace GraphQLProject
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GraphQLProject", Version = "v1" });
             });
+
+            services.AddDbContext<GraphQLDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
