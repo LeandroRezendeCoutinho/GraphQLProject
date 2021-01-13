@@ -27,6 +27,15 @@ namespace GraphQLProject.Mutation
                     return productService.UpdateProduct(productId, productObj);
                 });
 
+            Field<StringGraphType>("deleteProduct",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
+                resolve: context =>
+                {
+                    var productId = context.GetArgument<int>("id");
+                    productService.DeleteProduct(productId);
+                    return "Deleted";
+                });
+
         }
     }
 }
